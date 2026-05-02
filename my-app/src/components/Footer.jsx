@@ -2,94 +2,53 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-charcoal text-cream mt-24">
-      {/* Newsletter */}
-      <div className="border-b border-noir-800 py-14 px-8 md:px-12">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="section-label text-noir-500 mb-3">Stay in the loop</p>
-          <h3 className="font-display text-2xl md:text-3xl font-normal mb-6">
-            New arrivals, first looks, and <em>nothing else.</em>
-          </h3>
-          <form className="flex gap-0 max-w-md mx-auto" onSubmit={e => e.preventDefault()}>
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-1 bg-transparent border border-noir-700 border-r-0 px-4 py-3 font-body text-sm placeholder:text-noir-600 focus:outline-none focus:border-noir-500 text-cream"
-            />
-            <button type="submit" className="bg-cream text-charcoal font-mono text-[10px] tracking-widest2 uppercase px-6 py-3 hover:bg-noir-200 transition-colors flex-shrink-0">
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </div>
+    <footer className="bg-primary text-bg mt-24">
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div>
+            <h2 className="font-serif text-3xl font-semibold mb-4">MIXTAS</h2>
+            <p className="text-bg/60 font-sans text-sm leading-relaxed max-w-xs">
+              Minimalist luxury streetwear. Designed for those who wear silence louder than noise.
+            </p>
+          </div>
 
-      {/* Links */}
-      <div className="max-w-7xl mx-auto px-8 md:px-12 py-14 grid grid-cols-2 md:grid-cols-4 gap-10">
-        <div>
-          <p className="font-display text-3xl font-semibold tracking-widest mb-6">NOIR</p>
-          <p className="font-body text-sm text-noir-500 leading-relaxed">
-            Minimal fashion for those who know. Curated, considered, enduring.
-          </p>
-        </div>
-
-        <div>
-          <p className="section-label text-noir-600 mb-5">Shop</p>
-          <ul className="space-y-3">
-            {['New In', 'Jackets', 'Tops', 'Trousers', 'Dresses', 'Skirts'].map(cat => (
-              <li key={cat}>
-                <Link to={`/products?category=${cat}`} className="font-body text-sm text-noir-400 hover:text-cream transition-colors">
-                  {cat}
+          <div>
+            <h4 className="text-[10px] font-sans tracking-widest uppercase text-bg/40 mb-5">Navigate</h4>
+            <nav className="flex flex-col gap-3">
+              {[['/', 'Home'], ['/products', 'Shop'], ['/about', 'About']].map(([to, label]) => (
+                <Link key={to} to={to} className="text-sm font-sans text-bg/70 hover:text-bg transition-colors">
+                  {label}
                 </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+              ))}
+            </nav>
+          </div>
 
-        <div>
-          <p className="section-label text-noir-600 mb-5">Help</p>
-          <ul className="space-y-3">
-            {['Sizing Guide', 'Shipping & Returns', 'Care Instructions', 'Contact Us', 'FAQ'].map(item => (
-              <li key={item}>
-                <a href="#" className="font-body text-sm text-noir-400 hover:text-cream transition-colors">
-                  {item}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <p className="section-label text-noir-600 mb-5">Follow</p>
-          <ul className="space-y-3">
-            {['Instagram', 'Pinterest', 'TikTok'].map(s => (
-              <li key={s}>
-                <a href="#" className="font-body text-sm text-noir-400 hover:text-cream transition-colors">
-                  {s}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {/* Bottom */}
-      <div className="border-t border-noir-800 px-8 md:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-3">
-        <p className="font-mono text-[10px] tracking-wider text-noir-600 uppercase">
-          © {new Date().getFullYear()} Noir. All rights reserved.
-        </p>
-        <div className="flex gap-6">
-          {['Privacy Policy', 'Terms of Service', 'Cookies'].map(item => (
-            <a key={item} href="#" className="font-mono text-[10px] tracking-wider text-noir-600 hover:text-noir-400 transition-colors uppercase">
-              {item}
+          <div>
+            <h4 className="text-[10px] font-sans tracking-widest uppercase text-bg/40 mb-5">Contact</h4>
+            <a
+              href="https://wa.me/212600000000"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-sans text-wa hover:text-wa/80 transition-colors"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              WhatsApp Orders
             </a>
-          ))}
+            <p className="text-bg/40 text-xs font-sans mt-4">
+              Mon – Sat, 9:00 – 20:00
+            </p>
+          </div>
         </div>
-        <div className="flex gap-2 items-center">
-          {['visa', 'mc', 'amex', 'paypal'].map(method => (
-            <div key={method} className="w-10 h-6 bg-noir-800 rounded-sm flex items-center justify-center">
-              <span className="font-mono text-[7px] text-noir-500 uppercase">{method}</span>
-            </div>
-          ))}
+
+        <div className="border-t border-bg/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-bg/30 text-xs font-sans">
+            © {new Date().getFullYear()} Mixtas. All rights reserved.
+          </p>
+          <p className="text-bg/20 text-[10px] font-sans tracking-widest uppercase">
+            Casablanca, Morocco
+          </p>
         </div>
       </div>
     </footer>
